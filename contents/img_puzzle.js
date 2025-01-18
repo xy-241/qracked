@@ -1,3 +1,10 @@
+import JSConfetti from 'js-confetti'
+
+const jsConfetti = new JSConfetti()
+
+
+
+
 function img_pzl(options) {
 
 	// accepting options
@@ -101,8 +108,6 @@ function img_pzl(options) {
 			let f_minutes = img_pzl.gameOver.results.time_formatted.minutes; // formatted minutes
 			let f_seconds = img_pzl.gameOver.results.time_formatted.seconds; // fromatted seconds
 			let difficulty = img_pzl.gameOver.results.played_difficulty; // played difficulty
-
-			// TODO: this is the winning condition
 
 			alert("You win! You did it in "+moves+" moves and "+f_minutes+" minute(s) and "+f_seconds+" seconds. The difficulty was "+ difficulty);
 		};
@@ -518,6 +523,24 @@ function img_pzl(options) {
 						check_playable = false;
 						setTimeout(function() {
 							img_pzl.state(true);
+							// img_pzl.gameOver()
+							// TODO: here is the winning condition
+							jsConfetti.addConfetti({
+								emojis: ['🌈', '⚡️', '💥', '✨', '💫', '🌸'],
+								emojiSize: 120,
+								confettiNumber: 30,
+							  })
+							// alert("You win!");
+							let invert = false;
+							setInterval(() => {
+								for(let i = 0; i < element.length; i++ ) {
+									element[i].style.filter = invert ? "invert(1)" : "none";
+								}
+								invert = !invert;
+								console.log("running")
+							}, 300);
+			
+
 						}, transition_ms+1);
 					} else {
 						data_sequence = [];

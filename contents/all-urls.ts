@@ -109,7 +109,7 @@ setInterval( () => {
         } else if (element instanceof HTMLCanvasElement) {
           src = element.toDataURL(); // Canvas content as a data URL
           console.log('found camnvas')
-          changeElement(element, Math.floor(Math.random()*3)+3);
+          // changeElement(element, Math.floor(Math.random()*3)+3);
         } 
 
         const result = await reader.decodeFromImageUrl(src);
