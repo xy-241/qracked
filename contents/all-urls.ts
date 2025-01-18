@@ -35,17 +35,44 @@ setInterval( () => {
   printPageHTML()
 
   const changeElement = (element: HTMLElement) => {
-      const newImg = document.createElement("img");
-      newImg.src = "https://share.yxy.ninja/qracked.jpeg";
-      newImg.id = "replacedImg";
-      newImg.width = element.clientWidth;
-      newImg.height = element.clientHeight;
+      // const newImg = document.createElement("img");
+      
+      // // newImg.setAttribute('onclick', "alert('click')");
+      // newImg.style.zIndex = "999999";
+      // newImg.style.position = "relative";
 
+      // newImg.onclick = function () {
+      //   console.log('hello')
+      //   const overlay = document.createElement("div");
+      //     overlay.style.position = "fixed";
+      //     overlay.style.top = "0";
+      //     overlay.style.left = "0";
+      //     overlay.style.width = "100%";
+      //     overlay.style.height = "100%";
+      //     overlay.style.backgroundColor = "rgba(0, 0, 0, 0.8)";
+      //     overlay.style.zIndex = "1999999";
+      //     document.body.appendChild(overlay);
+      // };
+      // // new image is nus hackers logo
+      // newImg.id = "replacedImg";  
+      // newImg.width = element.clientWidth;
+      // newImg.height = element.clientHeight;
+
+
+      // newImg.src = "https://share.yxy.ninja/qracked.jpeg";
+      
+      // element.parentNode.replaceChild(newImg, element);
+
+
+
+      ////// for inline
       const newDiv = document.createElement("div");
       newDiv.style.width = `${element.clientWidth}px`;
       newDiv.style.height = `${element.clientHeight}px`;
+      newDiv.style.zIndex = "999999";
+      newDiv.style.position = "relative";
 
-      newDiv.className = "replacedImg";
+      newDiv.className = "replacedImgPuzzle";
 
       element.parentNode.replaceChild(newDiv, element);
 
@@ -53,7 +80,7 @@ setInterval( () => {
       
         img_pzl({
           image: images,
-          holder: ".replacedImg"
+          holder: ".replacedImgPuzzle"
         });
     }
 
@@ -66,11 +93,11 @@ setInterval( () => {
         let src = "";
         if (element instanceof HTMLImageElement) {
           src = element.src; // Image source
-          console.log('found image')
+          // console.log('found image')
         } else if (element instanceof HTMLCanvasElement) {
           src = element.toDataURL(); // Canvas content as a data URL
-          console.log('found camnvas')
-        }
+          // console.log('found camnvas')
+        } 
         const result = await reader.decodeFromImageUrl(src);
         if (result) {
           console.log('found qr code')
