@@ -2,12 +2,13 @@ import "./style.css"
 
 import { useState } from "react"
 
+import { Button } from "~components/ui/button"
+
 function IndexPopup() {
   const [data, setData] = useState("")
 
   return (
     <div
-      className="bg-black"
       style={{
         padding: 16
       }}>
@@ -19,6 +20,9 @@ function IndexPopup() {
         </a>{" "}
         Extension!
       </h2>
+      <Button variant="outline" size="default">
+        Click Me
+      </Button>
       <input onChange={(e) => setData(e.target.value)} value={data} />
       <a href="https://docs.plasmo.com" target="_blank">
         View Docs
