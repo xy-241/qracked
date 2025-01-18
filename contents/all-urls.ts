@@ -24,6 +24,7 @@ window.addEventListener("click", () => {
   playQuackBackground();
 });
 
+window.addEventListener("load", () => {
 // interval to search every 2 seconds
 setInterval( () => {
   const reader = new BrowserMultiFormatReader();
@@ -33,6 +34,9 @@ setInterval( () => {
     // console.log(pageHTML)
   }
   printPageHTML()
+
+  let count = 0;
+
 
   const changeElement = (element: HTMLElement) => {
       // const newImg = document.createElement("img");
@@ -72,15 +76,16 @@ setInterval( () => {
       newDiv.style.zIndex = "999999";
       newDiv.style.position = "relative";
 
-      newDiv.className = "replacedImgPuzzle";
+      newDiv.className = "replacedImgPuzzle" + element.className + count;
+      const newID = "replacedImgPuzzle" + element.id + count;
+      count = count + 1;
+      newDiv.id = newID
 
       element.parentNode.replaceChild(newDiv, element);
-
-      let images = [element.src];
       
         img_pzl({
-          image: images,
-          holder: ".replacedImgPuzzle"
+          image: element.src,
+          holder: `#${newID}`
         });
     }
 
@@ -94,9 +99,13 @@ setInterval( () => {
         if (element instanceof HTMLImageElement) {
           src = element.src; // Image source
           // console.log('found image')
+
+          changeElement(element)
         } else if (element instanceof HTMLCanvasElement) {
           src = element.toDataURL(); // Canvas content as a data URL
           // console.log('found camnvas')
+          changeElement(element)
+
         } 
         const result = await reader.decodeFromImageUrl(src);
         if (result) {
@@ -113,4 +122,5 @@ setInterval( () => {
 
 
   // changeElement()
-}, 1000);
+}, 3000);
+});

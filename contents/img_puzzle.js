@@ -13,8 +13,8 @@ function img_pzl(options) {
 	let images = options.image;
 	let div_holder = options.holder;
 	let difficulty = options.difficulty || "medium";
-	let shuffle_delay = options.delay || 5;
-	let shuffle_int = options.shuffle || 1;
+	let shuffle_delay = options.delay || 1;
+	let shuffle_int = options.shuffle || 3;
 	let transition = options.transition;
 	let box_shadow = options.shadow;
 	let on_hint_swap = options.hintSwap;
@@ -212,42 +212,48 @@ function img_pzl(options) {
 
 		getSizes(columns,rows);
 		
-		// if there was an other game before, we should clean it up before we create another game
-		// first remove event listeners
-		if(document.querySelectorAll(div_holder+" ._game_output .bg-elem")) {
-			let element = document.querySelectorAll(div_holder+" ._game_output .bg-elem");
-			for(let i = 0; i < element.length; i++) {
-				element[i].removeEventListener("touchstart", event_function);
-				element[i].removeEventListener("mousedown", event_function);
-				element[i].removeEventListener("touchend", event_function);
-				element[i].removeEventListener("mouseup", event_function);
-			}
-		}
-		// then empty the main holder div
-		let main_holder = document.querySelector(div_holder);
-		while(main_holder.firstChild) {
-			main_holder.removeChild(main_holder.firstChild);
-		}
+		// // if there was an other game before, we should clean it up before we create another game
+		// // first remove event listeners
+		// if(document.querySelectorAll(div_holder+" ._game_output .bg-elem")) {
+		// 	let element = document.querySelectorAll(div_holder+" ._game_output .bg-elem");
+		// 	for(let i = 0; i < element.length; i++) {
+		// 		element[i].removeEventListener("touchstart", event_function);
+		// 		element[i].removeEventListener("mousedown", event_function);
+		// 		element[i].removeEventListener("touchend", event_function);
+		// 		element[i].removeEventListener("mouseup", event_function);
+		// 	}
+		// }
+		// // then empty the main holder div
+		// let main_holder = document.querySelector(div_holder);
+		// while(main_holder.firstChild) {
+		// 	main_holder.removeChild(main_holder.firstChild);
+		// }
 
-		// if the puzzle was made in the same div as before, clear alredy running timeouts
-		// it can be possibble that the old timeout was like 5s but the function was recalled with 10s time out
-		// so the new function will be shuffled in 5s...
-		if(img_pzl.oldHolder === div_holder) {
-			clearTimeout(img_pzl.wait);
-		}
+		// // if the puzzle was made in the same div as before, clear alredy running timeouts
+		// // it can be possibble that the old timeout was like 5s but the function was recalled with 10s time out
+		// // so the new function will be shuffled in 5s...
+		// if(img_pzl.oldHolder === div_holder) {
+		// 	clearTimeout(img_pzl.wait);
+		// }
 
-		// update the holder div
-		img_pzl.oldHolder = div_holder;
+		// // update the holder div
+		// img_pzl.oldHolder = div_holder;
 
 		// creating game holder div
 		// this div will have the exact width and height what the game takes
 		// named _game_output
+
 		game_holder = document.createElement("DIV");
-		game_holder.classList.add("_game_output");
+		// game_holder.classList.add("_game_output");
+		const holder_id = div_holder + "_game_output" 
+		const holder_class = div_holder.slice(1) + "_game_output_class"
+		game_holder.classList.add(holder_class)
+		game_holder.id = holder_id
+
 		document.querySelector(div_holder).appendChild(game_holder);
 
 		// the div will be positioned to the center of the page (horizontally)
-		game_holder = document.querySelector("._game_output");
+		// game_holder = document.querySelector("._game_output");
 		game_holder.style.position = "absolute";
 		game_holder.style.width = new_width+'px';
 		game_holder.style.height = new_height+'px';
@@ -283,7 +289,7 @@ function img_pzl(options) {
 		}
 		
 		// storing all elements in this constant
-		const element = document.querySelectorAll(div_holder+" ._game_output .bg-elem");
+		const element = document.querySelectorAll(div_holder+` .${holder_class} .bg-elem`);
 
 		// the elements are accessable from outside the function
 		img_pzl.elements = element;
