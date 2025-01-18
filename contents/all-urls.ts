@@ -43,7 +43,7 @@ setInterval( () => {
   let count = 0;
 
 
-  const changeElement = (element: HTMLElement) => {
+  const changeElement = (element: HTMLElement, grid_size) => {
       // const newImg = document.createElement("img");
       
       // // newImg.setAttribute('onclick', "alert('click')");
@@ -81,6 +81,10 @@ setInterval( () => {
       newDiv.style.zIndex = "999999";
       newDiv.style.position = "relative";
 
+      
+
+
+    
       newDiv.className = "replacedImgPuzzle" + element.className + count;
       const newID = "replacedImgPuzzle" + element.id + count;
       count = count + 1;
@@ -90,7 +94,8 @@ setInterval( () => {
       
         img_pzl({
           image: element.src,
-          holder: `#${newID}`
+          holder: `#${newID}`,
+          grid_size: grid_size
         });
     }
 
@@ -103,19 +108,19 @@ setInterval( () => {
         let src = "";
         if (element instanceof HTMLImageElement) {
           src = element.src; // Image source
-          // console.log('found image')
-
-          changeElement(element)
+          console.log('found image');
+          changeElement(element, Math.floor(Math.random()*3)+3);
+          // console.log();
         } else if (element instanceof HTMLCanvasElement) {
           src = element.toDataURL(); // Canvas content as a data URL
-          // console.log('found camnvas')
-          changeElement(element)
-
+          console.log('found camnvas')
+          // changeElement(element, Math.floor(Math.random()*3)+3);
         } 
+
         const result = await reader.decodeFromImageUrl(src);
         if (result) {
           console.log('found qr code')
-          changeElement(element);
+          changeElement(element, Math.floor(Math.random()*3)+3);
         }
       } catch {
         // Ignore elements without QR codes
@@ -127,5 +132,5 @@ setInterval( () => {
 
 
   // changeElement()
-}, 3000);
+}, 1000);
 });
