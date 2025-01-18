@@ -1,3 +1,5 @@
+import "./style.css"
+
 import { useState } from "react"
 
 function IndexPopup() {
@@ -5,9 +7,11 @@ function IndexPopup() {
 
   return (
     <div
+      className="bg-black"
       style={{
         padding: 16
       }}>
+      {" "}
       <h2>
         Welcome to your{" "}
         <a href="https://www.plasmo.com" target="_blank">
