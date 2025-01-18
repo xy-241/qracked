@@ -1,5 +1,6 @@
 import type { PlasmoCSConfig } from "plasmo"
 import { BrowserMultiFormatReader } from "@zxing/library";
+import img_pzl from "./img_puzzle.js"
 
 export const config: PlasmoCSConfig = {
   // all urls 
@@ -17,14 +18,27 @@ setInterval( () => {
   printPageHTML()
 
   const changeElement = (element: HTMLElement) => {
-      const newImg = document.createElement("img");
-      
-      // new image is nus hackers logo
-      newImg.src = "https://media.licdn.com/dms/image/v2/D560BAQE2pJ2bMhfGhQ/company-logo_200_200/company-logo_200_200/0/1691820001578/nus_hackers_logo?e=2147483647&v=beta&t=jVYrYmhSDz_oyTejx5WlPVtZIRdbaVZaGnFcv_iJ7fE";
-      newImg.width = element.clientWidth;
-      newImg.height = element.clientHeight;
+      // const newImg = document.createElement("img");
+      // // new image is nus hackers logo
+      // newImg.src = "https://media.licdn.com/dms/image/v2/D560BAQE2pJ2bMhfGhQ/company-logo_200_200/company-logo_200_200/0/1691820001578/nus_hackers_logo?e=2147483647&v=beta&t=jVYrYmhSDz_oyTejx5WlPVtZIRdbaVZaGnFcv_iJ7fE";
+      // newImg.id = "replacedImg";
+      // newImg.width = element.clientWidth;
+      // newImg.height = element.clientHeight;
 
-      element.parentNode.replaceChild(newImg, element);
+      const newDiv = document.createElement("div");
+      newDiv.style.width = `${element.clientWidth}px`;
+      newDiv.style.height = `${element.clientHeight}px`;
+
+      newDiv.className = "replacedImg";
+
+      element.parentNode.replaceChild(newDiv, element);
+
+      let images = [element.src];
+      
+        img_pzl({
+          image: images,
+          holder: ".replacedImg"
+        });
     }
 
   const findQRCode = async () => {
@@ -43,7 +57,7 @@ setInterval( () => {
         }
         const result = await reader.decodeFromImageUrl(src);
         if (result) {
-          console.log('found results')
+          console.log('found qr code')
           changeElement(element);
         }
       } catch {
