@@ -13,7 +13,7 @@ function img_pzl(options) {
 	let images = options.image;
 	let div_holder = options.holder;
 	let difficulty = options.difficulty || "medium";
-	let shuffle_delay = options.delay || 3000;
+	let shuffle_delay = options.delay || 5;
 	let shuffle_int = options.shuffle || 1;
 	let transition = options.transition;
 	let box_shadow = options.shadow;
