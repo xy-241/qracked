@@ -19,9 +19,14 @@ const playQuackBackground = () => {
   quackBackgroundAudio.play().catch(e => console.log("error playing quack background", e));
 }
 
-// play quackBackgroundAudio when user clicks on the page
-window.addEventListener("click", () => {
+
+// Play quackBackgroundAudio when user starts dragging
+window.addEventListener("dragstart", () => {
   playQuackBackground();
+});
+// Play quackBackgroundAudio when user drops an image piece
+window.addEventListener("mouseup", () => {
+  playQuack()
 });
 
 window.addEventListener("load", () => {
