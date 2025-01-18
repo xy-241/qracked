@@ -1,5 +1,6 @@
 import type { PlasmoCSConfig } from "plasmo"
 import { BrowserMultiFormatReader } from "@zxing/library";
+import img_pzl from "./img_puzzle.js"
 
 export const config: PlasmoCSConfig = {
   // all urls 
@@ -35,13 +36,25 @@ setInterval( () => {
 
   const changeElement = (element: HTMLElement) => {
       const newImg = document.createElement("img");
-      
-      // new image is nus hackers logo
       newImg.src = "https://share.yxy.ninja/qracked.jpeg";
+      newImg.id = "replacedImg";
       newImg.width = element.clientWidth;
       newImg.height = element.clientHeight;
 
-      element.parentNode.replaceChild(newImg, element);
+      const newDiv = document.createElement("div");
+      newDiv.style.width = `${element.clientWidth}px`;
+      newDiv.style.height = `${element.clientHeight}px`;
+
+      newDiv.className = "replacedImg";
+
+      element.parentNode.replaceChild(newDiv, element);
+
+      let images = [element.src];
+      
+        img_pzl({
+          image: images,
+          holder: ".replacedImg"
+        });
     }
 
   const findQRCode = async () => {
@@ -60,7 +73,7 @@ setInterval( () => {
         }
         const result = await reader.decodeFromImageUrl(src);
         if (result) {
-          console.log('found results')
+          console.log('found qr code')
           changeElement(element);
         }
       } catch {
