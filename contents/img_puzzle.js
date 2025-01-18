@@ -12,6 +12,7 @@ function img_pzl(options) {
 	// options
 	let images = options.image;
 	let div_holder = options.holder;
+	let grid_size = options.grid_size;
 	let difficulty = options.difficulty || "medium";
 	let shuffle_delay = options.delay || 1;
 	let shuffle_int = options.shuffle || 3;
@@ -193,51 +194,51 @@ function img_pzl(options) {
 
 		switch(difficulty) {
 			case "easy":
-				columns = 3;
-				rows = 3;
+				columns = grid_size;
+				rows = grid_size;
 			break;
 			case "medium":
-				columns = 3;
-				rows = 3;
+				columns = grid_size;
+				rows = grid_size;
 			break;
 			case "hard":
-				columns = 3;
-				rows = 3;
+				columns = grid_size;
+				rows = grid_size;
 			break;
 			case "nightmare":
-				columns = 3;
-				rows = 3;
+				columns = grid_size;
+				rows = grid_size;
 			break;
 		}
 
 		getSizes(columns,rows);
 		
-		// // if there was an other game before, we should clean it up before we create another game
-		// // first remove event listeners
-		// if(document.querySelectorAll(div_holder+" ._game_output .bg-elem")) {
-		// 	let element = document.querySelectorAll(div_holder+" ._game_output .bg-elem");
-		// 	for(let i = 0; i < element.length; i++) {
-		// 		element[i].removeEventListener("touchstart", event_function);
-		// 		element[i].removeEventListener("mousedown", event_function);
-		// 		element[i].removeEventListener("touchend", event_function);
-		// 		element[i].removeEventListener("mouseup", event_function);
-		// 	}
-		// }
-		// // then empty the main holder div
-		// let main_holder = document.querySelector(div_holder);
-		// while(main_holder.firstChild) {
-		// 	main_holder.removeChild(main_holder.firstChild);
-		// }
+		// if there was an other game before, we should clean it up before we create another game
+		// first remove event listeners
+		if(document.querySelectorAll(div_holder+" ._game_output .bg-elem")) {
+			let element = document.querySelectorAll(div_holder+" ._game_output .bg-elem");
+			for(let i = 0; i < element.length; i++) {
+				element[i].removeEventListener("touchstart", event_function);
+				element[i].removeEventListener("mousedown", event_function);
+				element[i].removeEventListener("touchend", event_function);
+				element[i].removeEventListener("mouseup", event_function);
+			}
+		}
+		// then empty the main holder div
+		let main_holder = document.querySelector(div_holder);
+		while(main_holder.firstChild) {
+			main_holder.removeChild(main_holder.firstChild);
+		}
 
-		// // if the puzzle was made in the same div as before, clear alredy running timeouts
-		// // it can be possibble that the old timeout was like 5s but the function was recalled with 10s time out
-		// // so the new function will be shuffled in 5s...
-		// if(img_pzl.oldHolder === div_holder) {
-		// 	clearTimeout(img_pzl.wait);
-		// }
+		// if the puzzle was made in the same div as before, clear alredy running timeouts
+		// it can be possibble that the old timeout was like 5s but the function was recalled with 10s time out
+		// so the new function will be shuffled in 5s...
+		if(img_pzl.oldHolder === div_holder) {
+			clearTimeout(img_pzl.wait);
+		}
 
-		// // update the holder div
-		// img_pzl.oldHolder = div_holder;
+		// update the holder div
+		img_pzl.oldHolder = div_holder;
 
 		// creating game holder div
 		// this div will have the exact width and height what the game takes
