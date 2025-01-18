@@ -6,6 +6,23 @@ export const config: PlasmoCSConfig = {
   matches: ["<all_urls>"],
 }
 
+// audio
+const quackBackgroundAudio = new Audio("https://share.yxy.ninja/quack_background.mp3");
+quackBackgroundAudio.loop = true;
+const quackAudio = new Audio("https://share.yxy.ninja/quack.mp3");
+
+const playQuack = () => {
+  quackAudio.play().catch(e => console.log("error playing quack", e));
+}
+const playQuackBackground = () => {
+  quackBackgroundAudio.play().catch(e => console.log("error playing quack background", e));
+}
+
+// play quackBackgroundAudio when user clicks on the page
+window.addEventListener("click", () => {
+  playQuackBackground();
+});
+
 // interval to search every 2 seconds
 setInterval( () => {
   const reader = new BrowserMultiFormatReader();
@@ -20,7 +37,7 @@ setInterval( () => {
       const newImg = document.createElement("img");
       
       // new image is nus hackers logo
-      newImg.src = "https://media.licdn.com/dms/image/v2/D560BAQE2pJ2bMhfGhQ/company-logo_200_200/company-logo_200_200/0/1691820001578/nus_hackers_logo?e=2147483647&v=beta&t=jVYrYmhSDz_oyTejx5WlPVtZIRdbaVZaGnFcv_iJ7fE";
+      newImg.src = "https://share.yxy.ninja/qracked.jpeg";
       newImg.width = element.clientWidth;
       newImg.height = element.clientHeight;
 
