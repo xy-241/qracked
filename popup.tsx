@@ -1,18 +1,26 @@
 import "./style.css"
 
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle
-} from "@/components/ui/card"
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Slider } from "@/components/ui/slider"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 
 function IndexPopup() {
-  const [difficultyValue, setDifficultyValue] = useState([5])
+  const [difficultyValue, setDifficultyValue] = useState([1])
+  useEffect(() => {
+    chrome.storage.local.get(["difficulty"], (res) => {
+      console.log("difficulty")
+      console.log(res["difficulty"])
+      setDifficultyValue(res["difficulty"])
+    })
+  }, [])
+
+  const handleDifficultyChange = (value: number[]) => {
+    console.log(value)
+    setDifficultyValue(value)
+    chrome.storage.local.set({ difficulty: value }, () => {
+      console.log(`set difficulty: ${value[0]}`)
+    })
+  }
   return (
     <div
       style={{
@@ -26,11 +34,12 @@ function IndexPopup() {
       }}>
       <h2 style={{ fontWeight: "bold" }}>Welcome to Qracked</h2>
       <Slider
-        defaultValue={[5]}
-        max={10}
+        defaultValue={[1]}
+        min={1}
+        max={5}
         step={1}
         value={difficultyValue}
-        onValueChange={setDifficultyValue}
+        onValueChange={handleDifficultyChange}
         style={{ width: "80" }}
       />
       <div>{`Difficulty: ${difficultyValue}`}</div>
