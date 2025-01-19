@@ -15,7 +15,18 @@ function IndexPopup() {
     })
     chrome.storage.local.get(["qrackedSolved"], (res) => {
       console.log(res)
-      setQrackedSolved(res["qrackedSolved"])
+      if (Object.keys(res).length === 0) {
+        chrome.storage.local.set({ qrackedSolved: 0 }, () => {
+          console.log("Initialized qrackedSolved in chrome")
+        })
+        setQrackedSolved(0);
+      } else {
+        setQrackedSolved(res["qrackedSolved"])
+      }
+    })
+
+    chrome.storage.local.get(["qrackedSolved"], (res) => {
+      
     })
   }, [])
 
