@@ -44,7 +44,11 @@ window.addEventListener("load", () => {
   chrome.storage.local.get(["difficulty"], (res) => {
     // console.log("difficulty")
     // console.log(difficulty["difficulty"][0])
-    difficulty = res["difficulty"][0]
+    if (Object.keys(res).length !== 0) {
+      difficulty = res["difficulty"][0]
+    } else {
+      difficulty = 1
+    }
   })
 
   // interval to search every 2 seconds
