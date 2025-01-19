@@ -1,5 +1,7 @@
 # QRacked - Get Ready to Solve! 🧩
 
+![QRacked Logo](assets/qracked-adapt)
+
 ## What in the Pixel is QRacked? 🤔
 
 Welcome to **QRacked**, the puzzling Chrome extension that slices images into tiny, delightful pieces! Why? Because browsing is too easy these days! In a world full of scrolling and swiping, we’re here to remind you that every image deserves some serious attention. And let’s be honest, what’s more addictive than a good puzzle? 
@@ -19,10 +21,6 @@ Want to help us puzzle things out? Here’s the scoop:
 - **Spot a Bug?** Like a missing piece in your favorite puzzle, let us know ASAP! We’ll get it fixed faster than you can say “where did that piece go?”
 - **Got Ideas?** Throw your suggestions our way! We’re ready for all the *brain-teasing* features you can think of.
 - **Code Wizards Apply Here:** If you’re a magician with code, fork our repo and perform your wizardry with a pull request!
-
-### Let’s Keep It Fun and Friendly!
-
-We want a playful community! Please check out our [Code of Conduct](link-to-code-of-conduct) and [Contributing Guidelines](link-to-contributing-guidelines) before diving in.
 
 ## License? 🤓
 
