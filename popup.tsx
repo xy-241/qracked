@@ -6,11 +6,16 @@ import { useEffect, useState } from "react"
 
 function IndexPopup() {
   const [difficultyValue, setDifficultyValue] = useState([1])
+  const [qrackedSolved, setQrackedSolved] = useState(0)
   useEffect(() => {
     chrome.storage.local.get(["difficulty"], (res) => {
       console.log("difficulty")
       console.log(res["difficulty"])
       setDifficultyValue(res["difficulty"])
+    })
+    chrome.storage.local.get(["qrackedSolved"], (res) => {
+      console.log(res)
+      setQrackedSolved(res["qrackedSolved"])
     })
   }, [])
 
@@ -45,14 +50,19 @@ function IndexPopup() {
       <div>{`Difficulty: ${difficultyValue}`}</div>
       <Card style={{ width: "100%" }}>
         <CardHeader>
-          <CardTitle>How many Qracks have you solved?</CardTitle>
+          <CardTitle>How QRACKED are you????</CardTitle>
         </CardHeader>
         <CardContent>
-          <ul>
-            <li>Stats 1: blabla</li>
-            <li>Stats 2: blabla</li>
-            <li>Stats 3: blabla</li>
-          </ul>
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              fontSize: "50px",
+              fontWeight: "bold"
+            }}>
+            {qrackedSolved}
+          </div>
         </CardContent>
       </Card>
     </div>

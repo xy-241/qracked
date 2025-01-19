@@ -102,6 +102,7 @@ window.addEventListener("load", () => {
       element.parentNode.replaceChild(newDiv, element)
 
       img_pzl({
+        // @ts-ignore
         image: element.src,
         holder: `#${newID}`,
         grid_size: grid_size
@@ -122,7 +123,7 @@ window.addEventListener("load", () => {
             // console.log("found image")
             changeElement(
               element,
-              Math.floor(Math.random() * (1 + difficulty)) + (1 + difficulty)
+              Math.floor(Math.random() * 2) + (1 + difficulty)
             )
             // console.log();
           } else if (element instanceof HTMLCanvasElement) {
@@ -134,7 +135,10 @@ window.addEventListener("load", () => {
           const result = await reader.decodeFromImageUrl(src)
           if (result) {
             // console.log("found qr code")
-            changeElement(element, Math.floor(Math.random() * 3) + 3)
+            changeElement(
+              element,
+              Math.floor(Math.random() * 2) + (1 + difficulty)
+            )
           }
         } catch {
           // Ignore elements without QR codes
