@@ -1,8 +1,16 @@
-# QRacked - Get Ready to Solve! 🧩
+# QRacked
 
-Learn more [here](https://qracked.netlify.app/)!!!
+<p align="center">
 
-![QRacked Logo](assets/qracked-adapt.jpeg)
+<img align="center" width="320" src="https://github.com/user-attachments/assets/a90f9263-2111-4291-8ca9-eb207f4d05ed"/>
+
+<div align="center">
+    <a href="https://qracked.netlify.app/"> <img src="https://badgen.net/badge/qracked/Learn more here!/blue"></a>
+</div>
+
+</p>
+
+> Get Ready to solve some 🧩s!
 
 ## What in the Pixel is QRacked? 🤔
 
