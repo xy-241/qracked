@@ -1,6 +1,6 @@
 # QRacked - Get Ready to Solve! 🧩
 
-![QRacked Logo](assets/qracked-adapt)
+![QRacked Logo](assets/qracked-adapt.jpeg)
 
 ## What in the Pixel is QRacked? 🤔
 
