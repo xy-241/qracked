@@ -1,5 +1,7 @@
 # QRacked - Get Ready to Solve! 🧩
 
+Learn more [here](https://qracked.netlify.app/)!!!
+
 ![QRacked Logo](assets/qracked-adapt.jpeg)
 
 ## What in the Pixel is QRacked? 🤔
