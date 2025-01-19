@@ -1,32 +1,51 @@
 import "./style.css"
 
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle
+} from "@/components/ui/card"
+import { Slider } from "@/components/ui/slider"
 import { useState } from "react"
 
-import { Button } from "~components/ui/button"
-
 function IndexPopup() {
-  const [data, setData] = useState("")
-
+  const [difficultyValue, setDifficultyValue] = useState([5])
   return (
     <div
       style={{
-        padding: 16
+        width: 300,
+        display: "flex",
+        flexDirection: "column",
+        padding: 10,
+        alignItems: "center",
+        backgroundColor: "#FFA500", // Hex code for orange
+        gap: 10
       }}>
-      {" "}
-      <h2>
-        Welcome to your{" "}
-        <a href="https://www.plasmo.com" target="_blank">
-          Plasmo
-        </a>{" "}
-        Extension!
-      </h2>
-      <Button variant="outline" size="default">
-        Click Me
-      </Button>
-      <input onChange={(e) => setData(e.target.value)} value={data} />
-      <a href="https://docs.plasmo.com" target="_blank">
-        View Docs
-      </a>
+      <h2 style={{ fontWeight: "bold" }}>Welcome to Qracked</h2>
+      <Slider
+        defaultValue={[5]}
+        max={10}
+        step={1}
+        value={difficultyValue}
+        onValueChange={setDifficultyValue}
+        style={{ width: "80" }}
+      />
+      <div>{`Difficulty: ${difficultyValue}`}</div>
+      <Card style={{ width: "100%" }}>
+        <CardHeader>
+          <CardTitle>How many Qracks have you solved?</CardTitle>
+        </CardHeader>
+        <CardContent>
+          <ul>
+            <li>Stats 1: blabla</li>
+            <li>Stats 2: blabla</li>
+            <li>Stats 3: blabla</li>
+          </ul>
+        </CardContent>
+      </Card>
     </div>
   )
 }
