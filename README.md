@@ -6,9 +6,7 @@
 
 <div align="center">
     <a href="https://chromewebstore.google.com/detail/qrack/hkaakjnemaeahfgeifnejbbbbjddgmph" target="_blank"> <img src="https://badgen.net/badge/qracked/Chrome Extension Download/yellow"></a>
-
     <a href="https://qracked.netlify.app/" target="_blank"> <img src="https://badgen.net/badge/qracked/Our Website/blue"></a>    
-    
     <a href="https://www.youtube.com/watch?v=w7YAwHoLAj0" target="_blank"> <img src="https://badgen.net/badge/youtube/Watch Our Video/red"></a>
 </div>
 
