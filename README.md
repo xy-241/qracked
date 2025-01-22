@@ -5,7 +5,11 @@
 <img align="center" width="320" src="https://github.com/user-attachments/assets/a90f9263-2111-4291-8ca9-eb207f4d05ed"/>
 
 <div align="center">
-    <a href="https://qracked.netlify.app/" target="_blank"> <img src="https://badgen.net/badge/qracked/Learn more here!/blue"></a>
+    <a href="https://chromewebstore.google.com/detail/qrack/hkaakjnemaeahfgeifnejbbbbjddgmph" target="_blank"> <img src="https://badgen.net/badge/qracked/Chrome Extension Download/yellow"></a>
+
+    <a href="https://qracked.netlify.app/" target="_blank"> <img src="https://badgen.net/badge/qracked/Our Website/blue"></a>    
+    
+    <a href="https://www.youtube.com/watch?v=w7YAwHoLAj0" target="_blank"> <img src="https://badgen.net/badge/youtube/Watch Our Video/red"></a>
 </div>
 
 </p>
